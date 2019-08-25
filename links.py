@@ -11,6 +11,11 @@
 ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ 
 github: brandonskerritt
+
+Class designed to deal with all links on a webpage. It does:
+* Automatic UTM param adding
+* Checking for 404 links and trying to correct them if there's an error
+* Capitalising links (if the user wants to)
 """
 # python class designed to hold all links and deal with links
 import re

@@ -30,7 +30,7 @@ if len(args) <= 1:
 
 if args['ghost'] != None:
     # uses Ghost's content api to get the posts and parses them
-    r = get("https://brandonskerritt-2.ghost.io/ghost/api/v2/content/posts/?key=6ef88b4f6b24eff0247a358cf0")
+    r = get("")
     responseJson = r.json()
     # creates an ordered dict of title: id so we can easily ask the user what post they want to edit
     titlesValue = {}
