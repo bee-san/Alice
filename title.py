@@ -1,8 +1,11 @@
+import TitleCase
+
 class titleServant:
     """
     works out h1, h2 ordering and also how many of each one is used
+    Capitalises each title properly
     """
-    def __init__(self, text, mdorhtml):
+    def __init__(self, text, mdorhtml, capitaliseTitles):
         self.text = text
         self.mdorhtml = mdorhtml
         self.titles = []
@@ -14,8 +17,17 @@ class titleServant:
             "#####": 5
         }
         self.htmlHeaders = {
-            "h1": 1
+            "h1": 1,
+            "h2": 2,
+            "h3": 3,
+            "h4": 4,
+            "h5": 5
         }
+        if capitaliseTitles:
+            f = open("wikipedia.txt", "r")
+            self.companies = f.readlines()
+            f.close()
+            
     def run(self):
         self.getTitles()
         self.linkBreakdown()
@@ -59,6 +71,9 @@ class titleServant:
             if (abs(self.titles[number][1] - self.titles[counter][1]) > 1) and (self.titles[number][1] != 1 or self.titles[number][1] != 2):
                 print(f"Heading error detected. The heading {self.titles[number][0]} has a heading value of {self.titles[number][1]} but the previous title {self.titles[counter][0]} has value of {self.titles[counter][1])}")
             counter += 1
+    def capitaliseTitles(self):
+        for counter, title in enumerate(self.titles):
+            self.titles[counter] = TitleCase.titlecase(title)
 
 """
 So the post should always start with a H1

@@ -22,6 +22,8 @@ parser.add_argument('-f','--file', help='Blog post as a .md [Markdown] file', re
 parser.add_argument('-u','--url', help='Url of your blog [required for UTM tags]', required=False)
 parser.add_argument('-g','--ghost', help='Your ghost blogs content API', required=False)
 parser.add_argument('-c','--capitalselinks', help='Capitalise all links. You will be presented with each link and get to decide which ones to capitalise', required=False)
+parser.add_argument('-ct','--capitalsetitles', help='Capitalise all titles. You will be presented with each link and get to decide which ones to capitalise', required=False)
+
 args = vars(parser.parse_args())
 
 if len(args) <= 1:
