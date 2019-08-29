@@ -13,4 +13,5 @@ class TestBasicParent(unittest.TestCase):
         t = titleServant(text, mdorhtml = "md", capitaliseTitles = False)
         t.getTitles()
         t.titleBreakdown()
-        self.assertEqual(True, True)
+        temp = t.getLinksBreakdown()
+        self.assertEqual("{'h1': 1, 'h2': 1, 'h3': 0, 'h4': 0, 'h5': 0}" in temp, True)

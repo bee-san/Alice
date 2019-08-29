@@ -35,6 +35,8 @@ class titleServant:
         return self.titles
     def getText(self):
         return self.text
+    def getLinksBreakdown(self):
+        return self.linksBreakdown
             
     def run(self):
         self.getTitles()
@@ -50,12 +52,8 @@ class titleServant:
         # for every line in the text
         # if that text starts with a markdown header
         # append it to a dictionary with a numerical value
-        print("self.text is equal to", self.text, "\n")
-        temp = len(self.text.split('\n'))
-        print(f"There is this many lines {temp}")
         if self.mdorhtml == "md":
             for line in self.text.split("\n"):
-                print(f"I am looping and the current line is {line}")
                 # we want to go backwards through the dictionary
                 # because ## starts with #
                 # so if we go forwards, it doesn't work out very well.
@@ -63,10 +61,7 @@ class titleServant:
                 for val, key in self.markdownHeadersReverse.items():
                     if line.strip().startswith(val):
                         self.titles.append([line, self.markdownHeadersReverse.get(val)])
-                        print(f"I just appended {line}")
                         break
-
-        print("self.titles is equal to ", self.titles)
     def titleBreakdown(self):
         links = {
             "h1": 0,
