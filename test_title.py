@@ -14,4 +14,25 @@ class TestBasicParent(unittest.TestCase):
         t.getTitles()
         t.titleBreakdown()
         temp = t.getLinksBreakdown()
-        self.assertEqual("{'h1': 1, 'h2': 1, 'h3': 0, 'h4': 0, 'h5': 0}" in temp, True)
+        self.assertEqual("h1" in temp, True)
+    def test_ordering(self):
+        text = """# hello this is a h1 title\n#### hello this is a h4"""
+        t = titleServant(text, mdorhtml = "md", capitaliseTitles = False)
+        t.getTitles()
+        t.titleOrdering()
+        self.assertEqual(True, True)
+    def test_ordering_2(self):
+        text = """# hello this is a h1 title\n## hello this is a h2"""
+        t = titleServant(text, mdorhtml = "md", capitaliseTitles = False)
+        t.getTitles()
+        t.titleOrdering()
+        self.assertEqual(True, True)
+    def test_capitalise(self):
+        text = """# hello this is NASA and an example"""
+        t = titleServant(text, mdorhtml = "md", capitaliseTitles = False)
+        t.getTitles()
+        t.capitaliseTitlesFunc()
+        t.getTitlesList()
+        self.assertEqual(True, True)
+        
+        

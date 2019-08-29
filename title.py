@@ -88,11 +88,11 @@ class titleServant:
         counter = 0
         for number in range(1, len(self.titles)):
             if ((abs(self.titles[number][1] - self.titles[counter][1]) > 1)):
-                print(f"Heading error detected. The heading {self.titles[number][0]} has a heading value of {self.titles[number][1]} but the previous title {self.titles[counter][0]} has value of {self.titles[counter][1]}")
+                print(f"Heading error detected. The heading \"{self.titles[number][0]}\" has a heading value of {self.titles[number][1]} but the previous title \"{self.titles[counter][0]}\" has value of {self.titles[counter][1]}.")
             counter += 1
-    def capitaliseTitles(self):
+    def capitaliseTitlesFunc(self):
         for counter, title in enumerate(self.titles):
-            self.titles[counter] = TitleCase.titlecase(title)
+            self.titles[counter] = TitleCase.titlecase(str(title))
 
 """
 So the post should always start with a H1
