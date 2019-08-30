@@ -25,6 +25,13 @@ class linksServant:
         self.text = text
         self.mdorhtml = mdorhtml
         self.websiteurl = "skerritt.blog"
+        self.returnObject = {
+            "errors": {}
+        }
+    def run(self):
+        self.getLinksMark()
+        self.addUTMTags()
+        self.check404()
     def getLinksMark(self):
         if self.mdorhtml == "md":
             # Anything that isn't a square closing bracket
@@ -43,11 +50,8 @@ class linksServant:
     # adds utm tags to all links
         for num, match in enumerate(self.links):
             withUtm = match[1]+"?utm_source={}&utm_medium=blog&utm_campaign={}".format(self.websiteurl, self.websiteurl)
-            print(withUtm)
             self.text = self.text.replace(match[1], withUtm)
             self.links[num] = withUtm
-            print(self.links[num])
-        print("these are the links ", self.links)
     def check404(self):
         for counter, link in enumerate(self.links):
             check = self.check404eachLink(link)
@@ -57,8 +61,8 @@ class linksServant:
                 oldLink = self.LINKSDONTTOUCH[counter]
                 self.links = oldLink
                 link = check404eachLink(oldLink)
-                if check:
-                    print("Removed UTM tag to see if HTTP 404 is fixed. It's not, this link errors. Need manually fixing - ", oldLink)
+                if link:
+                    self.returnObject['errors']['link']
                 else:
                     print("The UTM tag wasn't added to the link as it resulted in a HTTP 404 error ", oldLink)
         print("these are the links ", self.links)

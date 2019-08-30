@@ -16,6 +16,10 @@ import argparse
 from requests import get
 from collections import OrderedDict
 
+import links
+import title
+import words
+
 
 parser = argparse.ArgumentParser(description='Blog')
 parser.add_argument('-f','--file', help='Blog post as a .md [Markdown] file', required=False)
@@ -51,17 +55,19 @@ if args['ghost'] != None:
     for title, num in titlesValue.items():
         if whatBlogPost == num:
             titleOfPost = title
-
+z
     # TODO next: get the HTML info in and actually start editign this biatttchh :)
 if args['file'] != None:
     f = open("{}".format(args['file']), "r")
     text = f.read()
     f.close()
-    import links
+    
     newLinksobj = links.linksServant(text, mdorhtml="md", websiteurl="skerritt.blog")
     newLinksobj.getLinksMark()    
     newLinksobj.addUTMTags()
     newLinksobj.check404()
+
+    tc = title.titleServant(text, )
 
 def mainCode(newLinksobj):
     newLinksobj.getLinksMark()    
